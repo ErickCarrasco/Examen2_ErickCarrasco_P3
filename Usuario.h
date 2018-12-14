@@ -8,6 +8,12 @@ using std::vector;
 #include <string>
 using std::string;
 
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
+
+using std::ostream;
+
 class Usuario{
 	private:
 		string nombre;
@@ -33,6 +39,12 @@ class Usuario{
 		void addContacto(Usuario*);
 		string getPassword();
 		void setPassword(string);
+		string toString();
+
+		void write(ofstream&);
+		void read(ifstream&);
+		friend ostream& operator<<(ostream&, Usuario*);
+
 		~Usuario();
 	
 };
