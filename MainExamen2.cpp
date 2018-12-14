@@ -15,7 +15,11 @@ using std::string;
 
 int main(){
 	int value=1;
+	Stack* stack = new LinkedStack();
+	int numero;
 	while(value==1){
+		cout<<endl;
+		cout<<endl;
 		cout<<"------            Bienvenido            ----------"<<endl;
 		cout<<endl;
 		cout<<"1--  Crear Usuario  --"<<endl;
@@ -33,7 +37,7 @@ int main(){
 			cout<<endl;
 			cout<<"1--  Crear Usuario  --"<<endl;
 			cout<<"2--  Log            --"<<endl;
-			cout<<"3--  Exit		   --"<<endl;
+			cout<<"3--  Exit	       --"<<endl;
 			cin>>seleccion;
 		}
 		if (seleccion==1){
@@ -48,12 +52,14 @@ int main(){
 			cout<<endl;
 			cout<<"Ingrese un nombre para su usuario (Se recomienda evitar usar espacio por cuestiones de lectura)"<<endl;
 			getline(cin, nombre);
+			getline(cin, nombre);
 
 			//Obtiene el genero del usuario
 			cout<<endl;
 			cout<<endl;
 			cout<<"Ingrese su genero: "<<endl;
 			getline(cin, genero);
+			//getline(cin, genero);
 
 			//Obtiene la edad
 			cout<<endl;
@@ -76,15 +82,48 @@ int main(){
 			cout<<endl;
 			cout<<"Ingrese su password: "<<endl;
 			getline(cin, contra);
+			getline(cin, contra);
 
 			//Guardar los datos en los archivos
+			/*
 			ofstream UsuariosW("Usuarios.dat", std::ios::binary);
 			Usuario* usuario1 = new Usuario(nombre, edad, genero, contra);
 			usuario1->write(UsuariosW);
 			UsuariosW.close();
+			*/
+			
+			stack->push(new Usuario(nombre, edad, genero, contra));
+			cout<<endl;
+			cout<<endl;
+
+			numero= stack->getSize();
+			cout<<numero;
+			
+			/*
+
+			Usuario* temp = stack->pop();
+			while(temp!=NULL){
+				cout<<temp->toString();
+				delete temp;
+				temp=stack->pop();
+			}
+			*/
+			cout<<endl;
+
 		}
 		if (seleccion==2){
 			//Leer Archivo Binario
+			ofstream UsuariosW("Usuarios.dat", std::ios::binary);
+			for (int i = 0; i < numero; ++i){
+				Usuario* temp = stack->pop();
+				while(temp!=NULL){
+					cout<<temp->toString();
+					temp->write(UsuariosW);
+					delete temp;
+					temp=stack->pop();
+				}
+			}
+			UsuariosW.close();
 			Usuario* usuarioLectura= new Usuario();
 			ifstream usuarioR("Usuarios.dat", std::ios::binary);
 			usuarioLectura->read(usuarioR);
@@ -92,6 +131,17 @@ int main(){
 
 			cout<<"Data leido: "<<endl<<usuarioLectura<<endl;
 		}
+
+		if (seleccion==3){
+			cout<<endl;
+			cout<<endl;
+			cout<<"--------- EXITING ---------"<<endl;
+			value=-1000;
+			cout<<endl;
+			cout<<endl;
+
+		}
+
 	}
 
 	return 0;

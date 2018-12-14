@@ -40,7 +40,7 @@ class Usuario{
 		string getPassword();
 		void setPassword(string);
 		string toString();
-
+		string toStringNode();
 		void write(ofstream&);
 		void read(ifstream&);
 		friend ostream& operator<<(ostream&, Usuario*);

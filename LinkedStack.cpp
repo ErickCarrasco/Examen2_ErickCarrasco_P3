@@ -11,6 +11,7 @@ LinkedStack::LinkedStack(){
 }
 
 bool LinkedStack::push(Usuario* obj){
+	size++;
 	//crear el nodo contenedor
 	Node* newNode= new Node(obj);
 	//enlazar con el siguiente nodo
@@ -48,6 +49,7 @@ Usuario* LinkedStack::pop(){
 		delete tmp;
 		//retornar
 		return retValue;
+		size--;
 	}
 }
 
@@ -55,7 +57,7 @@ void LinkedStack::print(){
 	Node* tmp=inicio;
 	cout<<"Stack: "<<endl;
 	while(tmp!=0){
-		//cout<<"<"<<tmp->getData()->toString()<<">";
+		//cout<<"<"<<tmp->getData()->toStringNode()<<">";
 		//Moverse hacia adelante
 		tmp=tmp->getNext();
 	}
@@ -64,4 +66,8 @@ void LinkedStack::print(){
 
 LinkedStack::~LinkedStack(){
 	delete inicio;
+}
+
+int LinkedStack::getSize(){
+	return size;
 }

@@ -83,7 +83,7 @@ string Usuario::toString(){
 //METODOS PARA ARCHIVOS BINARIOS
 
 ostream& operator<<(ostream& out, Usuario* user){
-	out<<user->nombre<<","<<user->genero<<","<<user->edad<<endl;
+	out<<user->nombre<<","<<user->genero<<","<<user->edad<<","<<user->password<<endl;
 	return out;
 }
 

@@ -14,6 +14,7 @@ class LinkedStack:public Stack{
 		virtual Usuario* pop();
 		virtual Usuario* top();
 		virtual void print();
+		virtual int getSize();
 		~LinkedStack();
 	
 };
