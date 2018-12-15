@@ -146,6 +146,7 @@ int main(){
 					}
 				}
 			}
+			//Template
 
 			//LECTURA PARA LOG IN
 			cout<<endl;
