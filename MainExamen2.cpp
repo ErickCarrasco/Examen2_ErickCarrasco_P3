@@ -174,7 +174,7 @@ int main(){
 				while(!inputFile.eof()){
 					string buffer;
 					getline(inputFile, buffer);
-					cout<<buffer<<endl;
+					//cout<<buffer<<endl;
 
 					int contador_comas=0;
 					
@@ -200,12 +200,12 @@ int main(){
 					
 					bool validadorP2=true;
 					int contador_comas2=0;
-					int numer_comas;
+					int numer_comas=0;
 					for (int i = 0; i < buffer.size(); ++i){
 						if (numer_comas==3){
 							validadorP2=false;
 						}
-						if (validadorP2==true){
+						if (validadorP2==true && numer_comas<3){
 							contador_comas2++;
 						}
 						if (buffer[i]==','){
@@ -213,29 +213,144 @@ int main(){
 						}
 						
 					}
-					cout<<contador_comas2;
 					for (int j = contador_comas2; j < buffer.size(); ++j){
-						cout<<buffer[j];
+						//cout<<buffer[j];
 						comparador_clave<<buffer[j];
 					}
 					
 
 					string comparador_user_s=comparador_user.str();
-					//string comparador_clave_s=comparador_clave.str();
+					string comparador_clave_s=comparador_clave.str();
 
 					//cout<<comparador_clave_s<<endl;
-					cout<<comparador_user_s<<endl;
+					//cout<<comparador_user_s<<endl;
 					if (comparador_user_s==user){
 						validadorNombre=true;
 					}
+					if (comparador_clave_s==contrauser){
+						validadorPass=true;
+					}
 				}
-				if (validadorNombre==true){
-					cout<<"Ha iniciado sesion"<<endl;
+				if (validadorNombre==true && validadorPass==true){
+					cout<<"** Ha iniciado sesion **"<<endl;
+					cout<<endl;
+					cout<<"************************"<<endl;
+					int menu_tinder;
+					cout<<endl;
+					int whileMenu=1;
+
+
+					vector <Usuario*> usuarios_lista;
+					//Enviar datos a un vector
+					ifstream inputFile;
+					inputFile.open("Test.txt");
+					if(!inputFile.is_open()){
+						cout<<"Ocurrio un error con la base de datos"<<endl;
+					}else{
+						while(!inputFile.eof()){
+							string buffer;
+							getline(inputFile, buffer);
+							stringstream nombre_user;
+							stringstream clave_user;
+							stringstream edad;
+							stringstream genero;
+
+							int contador_comas_vector1=0;
+							bool validadorVector1=true;
+							for (int i = 0; i < buffer.size(); i++){
+
+								if (buffer[i]!=',' && validadorVector1==true){
+									contador_comas_vector1++;
+
+								}
+								if (buffer[i]==','){
+									validadorVector1=false;
+								}
+						
+							}
+							for (int j = 0; j < contador_comas_vector1; ++j){
+								nombre_user<<buffer[j];
+							}
+
+							int contador_comas_vector2=0;
+							bool validadorVector2=true;
+							int numer_comas_vector2=0;
+							for (int i = 0; i < buffer.size(); ++i){
+								if (numer_comas_vector2==2){
+									validadorP2=false;
+								}
+								if (validadorP2==true && numer_comas<2){
+									contador_comas_vector2++;
+								}
+								if (buffer[i]==','){
+									numer_comas_vector2++;
+								}
+						
+							}
+
+							for (int i = contador_comas_vector1+1; i < contador_comas_vector2; ++i)
+							{
+								
+							}
+
+
+						}
+					}
+
+					while(whileMenu==1){
+						cout<<"|| BIENVENIDO AL PINDER ||"<<endl;
+						cout<<endl;
+						cout<<"1// 	Usuarios"<<endl;
+						cout<<"2// 	Agregar a lista de contactos"<<endl;
+						cout<<"3//	Lista de contactos"<<endl;
+						cout<<"4// 	Salir"<<endl;
+						cout<<endl;
+						cout<<"--- Haga una seleccion ---"<<endl;
+						cin>>menu_tinder;
+						while(menu_tinder<0 || menu_tinder>4){
+							cout<<endl;
+							cout<<"1// 	Usuarios"<<endl;
+							cout<<"2// 	Agregar a lista de contactos"<<endl;
+							cout<<"3//	Lista de contactos"<<endl;
+							cout<<"4// 	Salir"<<endl;
+							cout<<endl;
+							cout<<"--- Haga una seleccion ---"<<endl;
+
+						}
+
+						if (menu_tinder==1){
+							
+						}
+
+						if (menu_tinder==2){
+							
+						}
+
+						if (menu_tinder==3){
+							cout<<"SITE 403 NOT FOUND"<<endl;
+						}
+
+
+						if (menu_tinder==4){
+							cout<<endl;
+							cout<<endl;
+							cout<<endl;
+							cout<<"Cerrando Sesion..."<<endl;
+							whileMenu=-1000;
+						}
+					}
+
 				}
 			}
 
 
-
+			cout<<"--------------------------------------------------"<<endl;
+			cout<<endl;
+			cout<<"La sesion ha terminado"<<endl;
+			cout<<endl;
+			cout<<endl;
+			cout<<endl;
+			cout<<endl;
 
 		}
 
