@@ -1,3 +1,4 @@
+//Continuacion Segunda Fase
 #include <iostream>
 #include "LinkedStack.h"
 #include "Stack.h"
@@ -146,7 +147,7 @@ int main(){
 					}
 				}
 			}
-			//Template
+			//
 
 			//LECTURA PARA LOG IN
 			cout<<endl;
@@ -176,8 +177,7 @@ int main(){
 					cout<<buffer<<endl;
 
 					int contador_comas=0;
-					int contador_comas2=0;
-					int numer_comas;
+					
 					stringstream comparador_user;
 					stringstream comparador_clave;
 					bool validadorP1=true;
@@ -197,8 +197,10 @@ int main(){
 						comparador_user<<buffer[j];
 					}
 
-					/*
+					
 					bool validadorP2=true;
+					int contador_comas2=0;
+					int numer_comas;
 					for (int i = 0; i < buffer.size(); ++i){
 						if (numer_comas==3){
 							validadorP2=false;
@@ -211,11 +213,12 @@ int main(){
 						}
 						
 					}
-
+					cout<<contador_comas2;
 					for (int j = contador_comas2; j < buffer.size(); ++j){
+						cout<<buffer[j];
 						comparador_clave<<buffer[j];
 					}
-					*/
+					
 
 					string comparador_user_s=comparador_user.str();
 					//string comparador_clave_s=comparador_clave.str();
